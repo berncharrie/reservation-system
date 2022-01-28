@@ -29,7 +29,7 @@
 <body>
 	<div class="logo">
 		<!--<p>University of Science and Technology of Southern Philippines</p>-->
-		<img src="img/ustp-header.png">
+		<img src="ustp-header.png">
 	</div>
 	<div id="home"></div>
 	<header >
@@ -62,7 +62,7 @@
 
            <div class="showcase-signin">
            	<p> Create Account</p>
-			<img src="img/pencil.png">
+			<img src="pencil.png">
 			<a class="btn" href="signin.php" >Sign Up</a>
 
            </div>
