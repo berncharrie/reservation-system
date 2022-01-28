@@ -14,33 +14,9 @@
 
 		header("Location: login.php");
 		die;
-	}
+	} 
 
 
 
 	
  ?>
-
-<?php 
-	function getDoc($con){
-		if (isset($_SESSION['user_id'])){
-			$id = $_SESSION['user_id'];
-			$query = "select * from document where user_id ";
-
-			$result = mysqli_query($con, $query);
-
-			if ($result && mysqli_num_rows($result) > 0) {
-				$docPrice = mysqli_fetch_assoc($result);
-				return $docPrice;
-			}
-		}
-
-		die;
-	}
-
-
-
-	
- ?>
- 
- 

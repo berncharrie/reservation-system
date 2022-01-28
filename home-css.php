@@ -108,7 +108,7 @@ nav ul li a:focus{
 .showcase{
 
 	height: calc(100vh - 100px);
-	background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("img/ustp.png");
+	background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("ustp.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 	border-bottom: 10px solid #eb7620;
