@@ -1,38 +1,3 @@
-<?php
-
-	session_start();
-	include("connection.php");
-	include("functions.php");
-
-	
-	if ($_SERVER['REQUEST_METHOD'] == "POST") {
-		
-		$fullname = $_POST['fullname'];
-		$phone = $_POST['phone'];
-		$address = $_POST['address'];		
-		$course = $_POST['course'];
-		$year = $_POST['year'];
-		$gender = $_POST['gender'];
-		$idnumber = $_POST['idnumber'];
-		$email = $_POST['email'];
-		$password = $_POST['password'];
-
-		if ( !empty($fullname) && !empty($phone) && !empty($address) && !empty($course) && !empty($year) && !empty($gender) && !empty($idnumber) && !empty($email) && !empty($password) ) {
-
-			$query = "insert into signin (fullname, phone, address, course, year, gender, email, idnumber, password) values ('$fullname', '$phone', '$address', '$course', '$year', '$gender',  '$email', '$idnumber', '$password')";
-
-			mysqli_query($con, $query);
-			
-			header("Location: login.php");
-			die;
-		}else{
-			echo "Invalid Credentials :>";
-		}
-	}
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +6,8 @@
 	<title>Sign in</title>
 	<link rel="stylesheet" type="text/css" href="css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="css/fontawesome.min.css">
-	<link rel="stylesheet" type="text/css" media="screen" href="signin.css">
+	
+	<link rel="stylesheet" type="text/css" href="signin-css.php">
 	<link rel="icon" type="image/png" href="Favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +32,7 @@
 		<nav>
 			
 			<ul>
-				<li><a href="home.php" class="home"><i class="fas fa-home">Home</i></a></li>
+				<li><a href="home.php" class="home"><i class="fas fa-home">Back</i></a></li>
 				
 			</ul>
 		</nav>
@@ -81,32 +47,32 @@
 		<h4> Sign Up</h4>
 		<p>Already a member? Login <a href="login.php">here</a></p>
 
-		 <form method="post">
+		 <form action="signin2.php" method="POST">
 		 	<div class="input-box-first">
-		 			<input type="text" name="fullname" placeholder="Fullname">
+		 			<input type="text" name="fullname" placeholder="Fullname" id="fullname">
 
 		 	</div>
 		 	<div class="input-box-first">
-		 			<input type="number" name="phone" placeholder="Phone number">
+		 			<input type="text" name="phone" placeholder="Phone Number" id="phone">
 		 	</div>
 		 	
-		 		<input type="text" name="address" placeholder="Adrress">
+		 		<input type="text" name="address" placeholder="Adrress" id="address">
 		 	
 		 	<div class="input-box">
-		 		<input type="text" name="course" placeholder="Course"> 
+		 		<input type="text" name="course" placeholder="Course" id="course"> 
 
 		 	</div>
 		 	<div class="input-box">
 		 		
-		 		<input type="text" name="year" placeholder="Year">
+		 		<input type="text" name="year" placeholder="Year" id="year">
 
 		 	</div>
 		 	
 
 		 <div class="gender-details">
-	          <input type="radio" name="gender"	value="Male" id="dot-1">
-	          <input type="radio" name="gender" value="Female" id="dot-2">
-	          <input type="radio" name="gender" value="Others" id="dot-3">
+	          <input type="radio" name="gender"	value="Male" id="dot-1" id="Male">
+	          <input type="radio" name="gender" value="Female" id="dot-2" id="Female">
+	          <input type="radio" name="gender" value="Others" id="dot-3" id="Others">
 	          <span class="gender-title">Gender</span>
 
 	          <div class="category">
@@ -126,10 +92,10 @@
 	      </div>
 
 
-	      	<input type="text" name="email" placeholder="Email">
-		 	<input type="number" name="idnumber" placeholder="ID number">
-		 	<input type="password" name="password" placeholder="Password">
-		 	<input type="submit" name="" value="Register" id="signin">
+	      	<input type="text" name="email" placeholder="Email" id="email">
+		 	<input type="text" name="idnumber" placeholder="ID number" id="idnumber">
+		 	<input type="password" name="password" placeholder="Password" id="password">
+		 	<input type="submit" name="submit" class="submit" value="Register" id="signin">
 		 	
 	    </form>
 	    

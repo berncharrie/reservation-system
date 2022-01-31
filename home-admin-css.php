@@ -20,7 +20,7 @@ body{
    
     
 
-}
+} 
 
 a{
    color: #7f8db0;
@@ -340,10 +340,9 @@ a{
 
   
   height: 400px;
-  width:  500px;
+  width:  1200px;
   position: relative;
-  margin: auto;
-
+  
   }
 .home-container .box{
   height: 100%;  
@@ -508,3 +507,38 @@ a{
   	margin-left: 240px;
   	margin-top: -25px;
   }
+
+  .button{
+
+    position: absolute;
+    top: 600px;
+    left: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+
+  }
+.button a{
+  padding-left: 30px;
+}
+
+.back{
+  position: absolute; 
+  top: 650px;
+  left: 600px;
+}
+
+  .buttons{
+
+    position: absolute;
+    top: 180px;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+
+  }
+.buttons a{
+  padding-left: 30px;
+}
+

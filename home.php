@@ -1,15 +1,3 @@
-<?php 
-
-    session_start();
-    include("connection.php");
-    include("functions.php");
-
-  
- ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +28,7 @@
 				<li><a href="#home" data-toggle="tab">Home</a></li>
 				<li><a href="#about-us" class="active">About us</a></li>
 				<li><a href="login.php">Login</a></li>
-				<li><a href="#" >Contact</a></li>
+
 				
 			</ul>
 		</nav>
@@ -64,14 +52,6 @@
            	<p> Create Account</p>
 			<img src="pencil.png">
 			<a class="btn" href="signin.php" >Sign Up</a>
-
-           </div>
-           <div class="showcase-calendar">
-			<p>Look for available slots</p>
-			<img src="calendar.png" >
-			<a href="calendar.php" class="btn">Slots</a>
-			
-		   </div>
 	    </div>	
 	
 	</section>

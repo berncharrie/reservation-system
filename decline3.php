@@ -6,34 +6,34 @@
 ?>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Home</title>
+  <meta charset="UTF-8">
+  <title>Home</title>
     <link rel="icon" type="image/png" href="Favicon.png">
-	<link rel="stylesheet" type="text/css" media="screen" href="home-admin-css.php">
-	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$(".profile .icon_wrap").click(function(){
-			  $(this).parent().toggleClass("active");
-			  $(".notifications").removeClass("active");
-			});
+  <link rel="stylesheet" type="text/css" media="screen" href="home-admin-css.php">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".profile .icon_wrap").click(function(){
+        $(this).parent().toggleClass("active");
+        $(".notifications").removeClass("active");
+      });
 
-			$(".notifications .icon_wrap").click(function(){
-			  $(this).parent().toggleClass("active");
-			   $(".profile").removeClass("active");
-			});
+      $(".notifications .icon_wrap").click(function(){
+        $(this).parent().toggleClass("active");
+         $(".profile").removeClass("active");
+      });
 
-			$(".show_all .link").click(function(){
-			  $(".notifications").removeClass("active");
-			  $(".popup").show();
-			});
+      $(".show_all .link").click(function(){
+        $(".notifications").removeClass("active");
+        $(".popup").show();
+      });
 
-			$(".close").click(function(){
-			  $(".popup").hide();
-			});
-		});
-	</script>
+      $(".close").click(function(){
+        $(".popup").hide();
+      });
+    });
+  </script>
 
     <style type="text/css">
         
@@ -110,10 +110,12 @@
     </div>
   </div>
 
+<div class="back"><a href="home-admin.php" ><button>BACK</button></a><br>
+</div>
 
-<div class="buttons">
-    <a href="confirm3.php"><button>CONFIRMED RESERVATIONS</button></a><br>
-<a href="decline3.php"><button>DECLINED RESERVATIONS</button></a><br>
+
+<div style="color: #000; font-size: 30px; position:  absolute; left: 400px; font-weight: bold;">
+<a>Declined Reservation</a>
 
 </div>
 
@@ -129,29 +131,27 @@
         <th>Reservation ID</th>
         <th>Student ID</th>
         <th>Fullname</th>
-        <th>Course</th>
-        <th>Year</th>
         <th>Document</th>
         <th>Certification</th>
         <th>Purpose</th>
+        <th>Reason</th>
         <th>Action</th>
       </tr>
       <tbody>
           <?php
             require 'connection.php';
-            $query = $conn->query("SELECT *  FROM `reserveinfo`;") or die(mysqli_error());
+            $query = $conn->query("SELECT *  FROM `declined` ORDER BY declinedID DESC;") or die(mysqli_error());
             while($fetch = $query->fetch_array()){
           ?>
             <tr>
               <td><?php echo $fetch['reservationID']?></td>
               <td><?php echo $fetch['idnumber']?></td>
               <td><?php echo $fetch['fullname']?></td>
-              <td><?php echo $fetch['course']?></td>
-              <td><?php echo $fetch['year']?></td>
               <td><?php echo $fetch['document']?></td>
               <td><?php echo $fetch['certification']?></td>
               <td><?php echo $fetch['purpose']?></td>
-              <td><center><a href = "confirm.php?reservationID=<?php echo $fetch['reservationID']?>"><i></i>SEE DETAILS</a></center></td> 
+              <td><?php echo $fetch['reason']?></td>
+              <td><center><a href = "decline4.php?declinedID=<?php echo $fetch['declinedID']?>"><i></i>Change</a><a onclick = "confirmationDelete(this); return false;" href = "deletedeclined.php?declinedID=<?php echo $fetch['declinedID']?>"><i></i> Delete</a></center></td></center></td> 
   </tr>
            <?php
             }
@@ -182,4 +182,13 @@
     </div>
 
 </body>
+<script src = "../js/jquery.js"></script> 
+<script type = "text/javascript">
+  function confirmationDelete(anchor){
+    var conf = confirm("Are you sure you want to delete this record?");
+    if(conf){
+      window.location = anchor.attr("href");
+    }
+  } 
+</script>
 </html>

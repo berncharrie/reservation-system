@@ -1,40 +1,3 @@
-<?php 
-	session_start();
-	include("connection.php");
-	include("functions.php");
-
-	if ($_SERVER['REQUEST_METHOD'] == "POST") {
-		$idnumber = $_POST['idnumber'];
-		$password = $_POST['password'];
-
-		if (!empty($idnumber) && !empty($password)) {
-			$query = "select * from signin where idnumber = '$idnumber' limit 1";
-
-			$result = mysqli_query($con, $query);
-
-			if ($result) 
-			{
-				if ($result && mysqli_num_rows($result) > 0) 
-				{
-					$user_data = mysqli_fetch_assoc($result);
-					if ($user_data['password'] === $password) 
-					{
-						$_SESSION['idnumber'] = $user_data['idnumber'];
-						header("Location: profile.php");
-						die;
-					}
-				}
-			}
-			echo "Invalid Credentials :>";
-			
-		}else{
-			echo "Please fill everything up. :>";
-		}
-	}
-
- ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +39,7 @@
 		<h4> Welcome Back </h4>
 		<p>Not a member? Register <a href="signin.php">here</a></p>
 
-		 <form method="post">
+		 <form action="login2.php" method="post">
 		 	<p>ID number</p>
 		 	<input type="text" name="idnumber" placeholder="ID number">
 		 	<p>Password</p>

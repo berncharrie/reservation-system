@@ -1,17 +1,9 @@
-<?php 
-
-    session_start();
-    include("connection.php");
-    include("functions.php");
-    
-
-    $user_data = check_login($con);
-    
-
-  
- ?>
-
 <!DOCTYPE html>
+<?php
+  require_once 'checkuser.php';
+  require 'userinfo.php';
+  include "connection.php";
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -71,7 +63,6 @@
             <a href="home-account.php" style="color: black;"><i class="fas fa-home"></i></a></div>
         <div class="icon_wrap">
 
-            <i class="far fa-bell"></i>
         </div>
         
         <div class="notification_dd">
@@ -82,7 +73,7 @@
                     </div>
                     <div class="notify_data">
                         <div class="title">
-                           <a href="paymnt.php">Hi,  <?php echo $user_data['fullname']; ?>!</a>
+                           <a href="details.php">Hi,  <?php echo $fullname?>!</a>
                         </div>
                         <div class="sub_title">
                         
@@ -127,7 +118,7 @@
       <div class="profile">
         <div class="icon_wrap">
           <img src="user.png" alt="profile_pic">
-          <span class="name"> <? php echo $user_data['fullname']; ?> </span>
+          <span class="name"> <?php echo $fullname?> </span>
           <i class="fas fa-chevron-down"></i>
         </div>
 
@@ -158,7 +149,7 @@
                     </div>
                     <div class="notify_data">
                         <div class="title">
-                            Hi,  <?php echo $user_data['fullname']; ?>!
+                            Hi,  <?php echo $fullname?>!
                         </div>
                         <div class="sub_title">
                           You may now get your document in the school registrar located at Ground Floor LRC Bldg.
@@ -194,22 +185,21 @@
                         <img src="user.png" class="img-circle" alt="logo">
                     </div>
                     <div class="col-xs-7">
-                        <h3><?php echo $user_data['fullname']; ?></h3>
-                        <p><?php echo $user_data['email']; ?></p>
+                        <h3><?php echo $fullname?></h3>
+                        <p><?php echo $email?></p>
 
                         
-                        <p> <?php echo $user_data['course']; ?>  <?php echo $user_data['year']; ?> 
+                        <p> <?php echo $course?>  <?php echo $year?>
 
 
-                    year   [<b><?php echo $user_data['role']; ?>]</b></a></p>
-                        <p> <?php echo $user_data['address']; ?></a></p>
+                    year <b><?php echo $role?></b></a></p>
+                        <p> <?php echo $address?></a></p>
                     </div>
                    
                 </div>
                 <div class="grid-body">
                     <ul class="nav nav-tabs">
                         
-                        <li class=""><a href="#timeline" data-toggle="tab">Timeline</a></li>
                         <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
                         <li class=""><a href="#settings" data-toggle="tab">Edit Info</a></li>
                       
@@ -223,16 +213,16 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p><strong>Email:</strong> <a href=""><?php echo $user_data['email']; ?></a></p>
+                                    <p><strong>Email:</strong> <a href=""><?php echo $email?></a></p>
                                     <p><strong>Birthday:</strong> <a href=""></a><em>Not set</em></p>
-                                    <p><strong>Course:</strong> <?php echo $user_data['course']; ?> <?php echo $user_data['role']; ?></p>
-                                    <p><strong>Schoold ID:</strong> <?php echo $user_data['idnumber']; ?></p>
+                                    <p><strong>Course:</strong> <?php echo $course?> <?php echo $role?></p>
+                                    <p><strong>Schoold ID:</strong> <?php echo $idnumber?></p>
                                   
                                     
                                 </div>
                                 <div class="col-md-6">
-                                    <p><strong>Address:</strong> <?php echo $user_data['address']; ?> </p>
-                                    <p><strong>Phone:</strong> <?php echo $user_data['phone']; ?></p>
+                                    <p><strong>Address:</strong> <?php echo $address?> </p>
+                                    <p><strong>Phone:</strong> <?php echo $phone?></p>
                                     
                                    
                                     
@@ -244,51 +234,6 @@
                     </div>
                     <!-- END PROFILE -->
 
-                    <!-- BEGIN TIMELINE -->
-                    <div class="tab-pane" id="timeline">
-                        <p class="lead">My Timeline</p>
-                        <hr>
-                        <div class="row">
-                        <div class="col-md-12">
-                            <div class="timeline-centered">
-                                <article class="timeline-entry">
-                                    <div class="timeline-entry-inner">
-                                        <time class="timeline-time" datetime="2014-01-10T03:45"><span>11:41 AM</span> <span>Today</span></time>
-
-                                        <div class="timeline-icon bg-primary">
-                                            <i class="fa fa-home"></i>
-                                        </div>
-
-                                        <div class="timeline-label">
-                                            <div class="recent">
-                                                <h2><a href="#">Recent Transactions</a></h2>
-                                                <p>No Recent Transaction</p>
-                                               
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </article>
-
-                              
-
-                                <article class="timeline-entry">
-                                   
-                                </article>
-
-                                <article class="timeline-entry begin">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon bg-default">
-                                            <i class="fa fa-laptop"></i>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END TIMELINE -->
-
 
                 <!-- BEGIN SETINGS -->
                         <div class="tab-pane" id="settings">
@@ -296,10 +241,10 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p><strong>Email:</strong> <a href=""><?php echo $user_data['email']; ?></a></p>
+                                    <p><strong>Email:</strong> <a href=""><?php echo $email?></a></p>
                                     <p><strong>Birthday:</strong> <a href=""><em>Edit</em></a></p>
                                     <p><strong>Course:</strong> <em>Edit</em> </p>
-                                    <p><strong>Schoold ID:</strong> <?php echo $user_data['idnumber']; ?></p>
+                                    <p><strong>Schoold ID:</strong> <?php echo $idnumber?></p>
                                     <p><strong>Hobbies:</strong><em>Edit</em></p>
                                     
                                 </div>

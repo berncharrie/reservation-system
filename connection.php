@@ -1,10 +1,8 @@
-<?php 
-	$dbhost = "localhost";
-	$dbuser = "root";
-	$dbpass = "";
-	$dbname = "reservation system";
+<?php
 
-	if (!$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname)) {
-		die ("FAILED TO CONNECT");
-	}
- ?>
+$sname= "localhost";
+$unmae= "root";
+$password = "";
+$db_name = "reservation";
+
+$conn = mysqli_connect($sname, $unmae, $password, $db_name);

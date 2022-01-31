@@ -133,7 +133,7 @@ nav ul li a i:hover{
 
 
 	width: 450px;
-	height: 500px;
+	height: 380px;
 	background: #FCCC6B;
 	color: #fff;
 	top: 400px;
@@ -191,7 +191,6 @@ form{
 
 .login-box input[type="submit"]{
 
-	
 	background: #001933;
 	color: #fff;
 	font-size: 14px;
@@ -203,30 +202,13 @@ form{
 	font-weight: bold;
 	margin-bottom: 10px;
 	transition: ease-out 0.3s;
-	bottom: 10px;
+	cursor: pointer;
+	bottom: 10px
 	
 }
 
 
-.login-box input[type="submit"]{
 
-	
-	position: absolute;
-	background: #001933;
-	color: #fff;
-	font-size: 14px;
-	font-family: "Poppins";
-	margin: 10px 0 0 5px;
-	padding: 5px 3px;
-	border: none;
-	outline: none;
-	font-weight: bold;
-	margin-bottom: 10px;
-	transition: ease-out 0.3s;
-	left: 41px;
-  	cursor: pointer;
-	
-}
 .login-box input[type="submit"]:hover{
 
 	box-shadow: inset 350px 0 0 0 #F0AB28;
@@ -248,7 +230,7 @@ form{
 }
 form p{
 
-	text-align: left;
+text-align: left;
 	margin: 0 10px;
 }
 
@@ -280,110 +262,3 @@ form p{
 	margin: 5px;
 }
 
-form .gender-details .gender-title{
-  font-size: 16px;
-  font-weight: 500;
-  color: black;
-
- }
- form .category{
-
-   display: flex;
-   flex-wrap: nowrap;
-   width: 100%;
-   justify-content: space-between;
-
- }
- form .category label{
-   display: flex;
-   cursor: pointer;
-   color: black;
-   padding: 12px;
-   font-size: 14px;
- }
-
- form .category label .dot{
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background: #d9d9d9;
-  border: 5px solid transparent;
-  transition: all 0.3s ease;
-}
- #dot-1:checked ~ .category label .one,
- #dot-2:checked ~ .category label .two,
- #dot-3:checked ~ .category label .three{
-   background: #9b59b6;
-   border-color: #d9d9d9;
- }
- form input[type="radio"]{
-   display: none;
- }
-
-
-
- /*form*/
-
-
-
-form .input-box-first input[type="text"]{
-  
-  margin-left: 25px;
- 
-
- 
-}
-form .input-box-first input[name="phone"]{
-  
-  margin-left: 3px;
- 
-
- 
-}
-form .input-box input[name="course"]
-{
-
-	margin-left: 15px;
-
-}
-form .input-box {
-  
-  position: relative;
-  left: 10px;
-  margin-bottom: 10px;
-  width: calc(100% / 2 - 20px);
-
- 
-}
-form .input-box-first{
-  
- margin-left: 11px;
- 
-  width: calc(100% / 2 - 20px);
-
- 
-}
-
-
-.bg-modal{
-
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top:  0;
-	display: none;
-
-}
-.back{
-
-	position: absolute;
-	top: 0;
-	left:  14px;
-	font-size: 36px;
-	color: black;
-	cursor: pointer;
-}
-#next:checked ~ .bg-modal{
-  display: block;
-}

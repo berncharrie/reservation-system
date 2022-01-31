@@ -1,46 +1,55 @@
-<?php 
-    session_start();
-    include("connection.php");
-    include("functions.php");
-    
-
-    $user_data = check_login($con);
-     
- ?>
-
-
-
 <!DOCTYPE html>
+<?php
+  require_once 'checkuser.php';
+  require 'userinfo.php';
+  include "connection.php";
+?>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Home</title>
+  <meta charset="UTF-8">
+  <title>Home</title>
     <link rel="icon" type="image/png" href="Favicon.png">
-	<link rel="stylesheet" type="text/css" media="screen" href="styles.php">
-	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$(".profile .icon_wrap").click(function(){
-			  $(this).parent().toggleClass("active");
-			  $(".notifications").removeClass("active");
-			});
+  <link rel="stylesheet" type="text/css" media="screen" href="styles.php">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".profile .icon_wrap").click(function(){
+        $(this).parent().toggleClass("active");
+        $(".notifications").removeClass("active");
+      });
 
-			$(".notifications .icon_wrap").click(function(){
-			  $(this).parent().toggleClass("active");
-			   $(".profile").removeClass("active");
-			});
+      $(".notifications .icon_wrap").click(function(){
+        $(this).parent().toggleClass("active");
+         $(".profile").removeClass("active");
+      });
 
-			$(".show_all .link").click(function(){
-			  $(".notifications").removeClass("active");
-			  $(".popup").show();
-			});
+      $(".show_all .link").click(function(){
+        $(".notifications").removeClass("active");
+        $(".popup").show();
+      });
 
-			$(".close").click(function(){
-			  $(".popup").hide();
-			});
-		});
-	</script>
+      $(".close").click(function(){
+        $(".popup").hide();
+      });
+    });
+
+
+    function show(){
+            var close = document.getElementById("button");
+            var text = document.getElementById("modals");
+            
+
+        if (close.checked == true){
+             text.style.visibility = "visible";
+                    } else {
+            text.style.visibility= "hidden";
+    }
+}
+
+      
+  </script>
+
 </head>
 <body>
 
@@ -54,15 +63,14 @@
 
     <div class="navbar_right">
       <div class="notifications">
-        <div class="icon_wrap"><i class="far fa-bell"></i></div>
+        <div class="icon_wrap"></i></div>
         
         <div class="notification_dd">
-            <ul class="notification_ul">
+
                 <li class="starbucks success">
                     <div class="notify_icon">
                         <span class="icon"></span>  
                     </div>
-                   No Notification
                </li>
            </ul>
 
@@ -74,19 +82,17 @@
       <div class="profile">
         <div class="icon_wrap">
           <img src="user.png" alt="profile_pic">
-          <span class="name"><?php echo $user_data['fullname']; ?></span>
+          <span class="name"><?php echo $fullname?></span>
           <i class="fas fa-chevron-down"></i>
         </div>
 
         <div class="profile_dd">
           <ul class="profile_ul">
-            <li class="profile_li"><a class="profile" ><span class="picon"><i class="fas fa-user-alt"></i>
+            <li class="profile_li"><a class="profile.php" ><span class="picon"><i class="fas fa-user-alt"></i>
                 </span>Profile</a>
               <div class="btn"><a href="profile.php">My Account</a></div>
             </li>
-            <li><a class="address" href="#"><span class="picon"><i class="fas fa-map-marker"></i></span>Address</a></li>
-            <li><a class="settings" href="#"><span class="picon"><i class="fas fa-cog"></i></span>Settings</a></li>
-            <li><a class="logout" href="#"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+            <li><a class="logout" href="logout.php"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
           </ul>
         </div>
       </div>
@@ -97,9 +103,77 @@
   
 </div>
 
+<div class="details">
+  <input type="checkbox" name="" id="button" onclick="show()">
+
+  <label for="button">  Price List </label>
+  
+</div>
+
+<div class="price" id="modals">
+        
+        <div class="modal" >
+               <div class="close">
+<label for="button">+</label>
+</div>
+
+               <table>
+    
+        <tr>
+            <th>Price</th>
+            <th> Document</th>
+            
+            <th> </th>
+        </tr>
+<?php
+    $conn = mysqli_connect("localhost", "root", "", "reservation");
+
+    if($conn-> connect_error){
+
+        die("connection failed". $conn-> connection_error);
+    }
+
+$sql = "SELECT type_docu, pricelist from document";
+$result = $conn-> query($sql);
+
+if($result-> num_rows > 0 ){
+
+    while($row = $result-> fetch_assoc()){
 
 
+        echo "<tr><td>". $row["type_docu"] ."</td><td>" .$row["pricelist"]."</td></tr>" ;
+}
+
+         echo "</table>";
+}
+else{
+
+    echo "0 result";
+}
+$conn-> close();
+?>
+
+</table>
+
+           </div>
+
+            
+        
+
+        </div>
+
+
+
+     
     <div class="home-container">
+
+      
+
+
+
+
+
+      
 
         <div class="box" >
 
@@ -120,7 +194,7 @@
             </div>
 
             <div class="content">
-                <a href="notify.php"><h3> Transactions</h3></a>
+                <a href="transaction-list.php"><h3> Transactions</h3></a>
                 <p></p>
             </div>
 

@@ -40,7 +40,7 @@
 
         table{
 
-                font-size: 15px;
+                font-size: 16px;
                 border-collapse: collapse;
                 width: 100%;
                 color: black;
@@ -110,12 +110,10 @@
     </div>
   </div>
 
+<div class="back"><a href="transaction-list.php"><button>BACK</button></a><br></div>
 
-<div class="buttons">
-    <a href="confirm3.php"><button>CONFIRMED RESERVATIONS</button></a><br>
-<a href="decline3.php"><button>DECLINED RESERVATIONS</button></a><br>
 
-</div>
+
 
     <div class="home-container">
 
@@ -124,13 +122,9 @@
            <div>
                
 
-          <table>   
+      <table>   
       <tr>
         <th>Reservation ID</th>
-        <th>Student ID</th>
-        <th>Fullname</th>
-        <th>Course</th>
-        <th>Year</th>
         <th>Document</th>
         <th>Certification</th>
         <th>Purpose</th>
@@ -139,19 +133,15 @@
       <tbody>
           <?php
             require 'connection.php';
-            $query = $conn->query("SELECT *  FROM `reserveinfo`;") or die(mysqli_error());
+            $query = $conn->query("SELECT *  FROM `declined` WHERE idnumber = ('$idnumber');") or die(mysqli_error());
             while($fetch = $query->fetch_array()){
           ?>
             <tr>
               <td><?php echo $fetch['reservationID']?></td>
-              <td><?php echo $fetch['idnumber']?></td>
-              <td><?php echo $fetch['fullname']?></td>
-              <td><?php echo $fetch['course']?></td>
-              <td><?php echo $fetch['year']?></td>
               <td><?php echo $fetch['document']?></td>
               <td><?php echo $fetch['certification']?></td>
               <td><?php echo $fetch['purpose']?></td>
-              <td><center><a href = "confirm.php?reservationID=<?php echo $fetch['reservationID']?>"><i></i>SEE DETAILS</a></center></td> 
+                <td><center></a><a href = "tracking-decline.php?declinedID=<?php echo $fetch['declinedID']?>"><i></i><button>See Details</button></a></center></td>
   </tr>
            <?php
             }

@@ -479,7 +479,7 @@ a{
 
 table{
 
-                font-size: 20px;
+                font-size: 16px;
                 border-collapse: collapse;
                 width: 100%;
                 color: black;
@@ -491,5 +491,54 @@ table{
 
 }
 
+.price{
 
+  position: absolute;
+  top: 0;
+  background-color: rgba(0,0,0,0.7);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  visibility: hidden;
+  z-index: 1000;
+
+}
+.modal{
+  z-index: 1px;
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  position: relative;
+
+}
+.close{
+  position: absolute;
+  top: 0;
+  right: 14px;
+  transform: rotate(45deg);
+  cursor: pointer;
+  font-size: 30px;
+}
+.close label{
+  cursor: pointer;
+}
+
+
+.details{
+  position: absolute;
+  top: 170px;
+  color: white;
+  left: 230px;
+  cursor: pointer;
+  z-index: 1;
+}
+.details label{
+    cursor: pointer;
+}
+.details input[type = "checkbox"]{
+  display: none;
+}
 
